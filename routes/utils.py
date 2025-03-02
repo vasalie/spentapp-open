@@ -7,10 +7,7 @@ arr_rows =  [
 dict_conv = {
             'CAN' :1,
             'EUR' :1.5,
-            'RON' :0.3,
-            'HUN' :0.0038,
             'USD' :1.44,
-            'AED' :0.39,
             }
 
 # type
@@ -18,8 +15,7 @@ arr_type = list(dict_conv.keys())
 
 # locations
 arr_loc =   [
-            'Sighisoara', 'Dej', 'Burlington', 'Madeira', 'Dubai', 'Sardinia', 
-            'Sibiu', 'Ungaria'
+            'USA', 'Canada', 'Europe'
             ]
 
 # category
