@@ -1,0 +1,30 @@
+<form action="{{ url_for('bp_records.add_new') }}" method="post">
+    <input type="date" class="form-control" id="date" placeholder="Enter Date" name="date" required>
+    <br>
+    <select name="location"  class="form-control" required>
+        <option value="">Select Location</option> 
+        {% for x in arr_loc %}
+            <option value="{{ x }}">{{ x }}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <select name="category"  class="form-control" required>
+        <option value="">Select Category</option> 
+        {% for x in arr_cat %}
+            <option value="{{ x }}">{{ x }}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <input type="number" class="form-control" id="value" placeholder="Enter Value" name="value" required>
+    <br>
+    <select name="type"  class="form-control" required>
+        <option value="">Select Currency</option> 
+        {% for x in arr_type %}
+            <option value="{{ x }}">{{ x }}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <input type="text" class="form-control" id="note" placeholder="Enter Note" name="note">
+    <br>
+    <button class="btn btn-primary" type="submit">Add New</button>
+</form>

@@ -1,0 +1,28 @@
+
+
+<button class="btn btn-info me-2" disabled  style="width: 150px"><b>{{ arr_page[5] }} Records</b></button>
+{% if (arr_page[4] > 1) %}
+    <a class="btn btn-primary" href="{{ url_for(bp_name + '.main', page=1,           search=search, reset=reset, rows=rows, column=column) }}"  style="width: 80px"><b>1</b></a>
+{% else %}
+    <button class="btn btn-dark" disabled  style="width: 80px"><b>1</b></button>
+{% endif %}
+
+{% if not(arr_page[4] == 0) %}
+    <a class="btn btn-primary" href="{{ url_for(bp_name + '.main', page=arr_page[4], search=search, reset=reset, rows=rows, column=column) }}"  style="width: 80px"><b>&lt;&lt;</b></a>
+{% else %}
+    <button class="btn btn-dark" disabled  style="width: 80px"><b>&lt;&lt;</b></button>
+{% endif %}
+
+<button class="btn btn-info" disabled  style="width: 80px"><b>{{ arr_page[2] }}</b></button>
+
+{% if arr_page[1] < arr_page[5]  %}
+    <a class="btn btn-primary" href="{{ url_for(bp_name + '.main', page=arr_page[3], search=search, reset=reset, rows=rows, column=column) }}"  style="width: 80px"><b>&gt;&gt;</b></a>
+{% else %}
+    <button class="btn btn-dark" disabled  style="width: 80px"><b>&gt;&gt;</b></button>
+{% endif %} 
+
+{% if arr_page[2] < arr_page[6]  %}
+    <a class="btn btn-primary" href="{{ url_for(bp_name + '.main', page=arr_page[6], search=search, reset=reset, rows=rows, column=column) }}"  style="width: 80px"><b>{{ arr_page[6] }}</b></a>
+{% else %}
+    <button class="btn btn-dark" disabled  style="width: 80px"><b>{{ arr_page[6] }}</b></button>
+{% endif %}

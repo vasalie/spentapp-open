@@ -1,0 +1,40 @@
+<div class="d-flex">
+
+    <form class="" action="{{ url_for(bp_name + '.main') }}" method="get">
+        <div class="d-flex">
+            <input type="hidden" class="form-control" id="reset"  name="reset" value="true">
+            <input type="hidden" class="form-control" id="rows"  name="rows" value="{{ rows }}">
+            <div class="me-2">
+                {% if column == '' %}
+                    <select name="column"  class="form-control" required style="width: 200px"> 
+                        <option value="">Select Search Column</option>
+                {% else %}
+                    <select name="column"  class="form-control bg-warning" style="width: 200px"> 
+                        <option value="{{ column }}">{{ dict_col[column] }}</option>
+                {% endif %}
+                    {% for x in dict_col %}
+                        {% if x != column %}
+                            <option value="{{ x }}">{{ dict_col[x] }}</option>
+                        {% endif %}
+                    {% endfor %}
+                    </select>
+            </div>
+            {% if search == '' %}
+                <div class="me-2">
+                    <input type="text" class="form-control" id="search" placeholder="Enter Search String" name="search" required value="{{ search }}" style="width: 300px">
+                </div>
+            {% else %}
+                <div class="me-2">
+                    <input type="text" class="form-control bg-warning" id="search" placeholder="Enter Search String" name="search" required value="{{ search }}" style="width: 300px">
+                </div>
+                <div class="me-2">
+                    <a class="btn btn-warning" href="{{ url_for(bp_name + '.main', rows=rows) }}">Clear Search</a>
+                </div>
+            {% endif %}
+            <div class="me-2">
+                <button class="btn btn-primary" type="submit">Quick Search</button>
+            </div>
+        </div>
+    </form>
+
+</div>

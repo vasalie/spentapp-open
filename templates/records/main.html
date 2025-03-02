@@ -1,0 +1,88 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+    <div class="d-flex">
+        <div class="display-5">{{ pagename }}</div>
+
+        <div class="ms-4 mt-3">
+            <form class="" action = "{{ url_for(bp_name + '.main') }}" method = "get">
+                <input type="hidden" class="form-control" id="reset"  name="reset" value="true">
+                <input type="hidden" class="form-control" id="search"  name="search" value="{{ search }}">
+                <input type="hidden" class="form-control" id="column"  name="column" value="{{ column }}">
+                <select onchange='this.form.submit()' name="rows"  class="form-control" style="width: 200px"> 
+                    <option value="{{ rows }}">Show: {{ rows }} records</option>
+                    {% for x in arr_rows %}
+                        {% if x != rows %}
+                            <option value="{{ x }}">{{ x }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </form>
+        </div>
+
+        <div class="ms-4 mt-3">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#AddNew">
+                Add New
+            </button>
+        </div>
+    </div>
+    
+    <br>
+
+    {% include 'included/search.html' %}
+
+    <br>
+
+    {% if (rows | int) >= SHOW_TOP_SEARCH %}
+        {% include 'included/pagination.html' %}
+        <br><br>
+    {% endif %}
+
+    {% if show_total %}
+        <h1 class="text-light text-left">
+            Total is: <span class="text-warning"> {{ val_total }}</span> CAN
+        </h1>
+    {% endif %}
+
+    <table class="table table-dark table-striped table-hover table-bordered border-secondarys">
+        <thead class="">
+            <tr>
+                <th style="width: 100px;">ID       </th>
+                <th style="width: 100px;">Date     </th>
+                <th style="width: 200px;">Location </th>
+                <th style="width: 200px;">Category </th>
+                <th style="width: 120px;">Currency </th>
+                <th style="width: 100px;">CAN      </th>
+                <th                      >Notes    </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for val in values %}
+            <tr>
+                <td>
+                    <div class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#ModalEdit"
+                        hx-get="{{  url_for(bp_name + '.edit', id=val.id) }}" hx-target="#BodyEdit" style="width: 80px">
+                        {{ val.id }}
+                    </div>
+                </td>
+                <td                 >{{ val.date     }}</td>
+                <td                 >{{ val.location }}</td>
+                <td                 >{{ val.category }}</td>
+                <td class="text-end">{{ val.value    }} {{ val.type     }}</td>
+                <td class="text-end">{{ val.convert }}</td>
+                <td                 >{{ val.note    }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% include 'included/pagination.html' %}
+    <br><br>
+
+
+    {% include 'records/modal_add.html' %}
+    {% include 'records/modal_edit.html' %}
+
+{% endblock %}
+

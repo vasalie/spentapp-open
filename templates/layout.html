@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ pagename }} Page</title>
+    <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+
+</head>
+<body class="bg-secondary text-light">
+
+    <div class="container">
+    <nav style="margin: 20px 0;">
+        <a class="btn btn-primary" href="{{ url_for('bp_home.main'   ) }}">Home</a>
+        <a class="btn btn-primary" href="{{ url_for('bp_records.main') }}">Records</a>
+        <a class="btn btn-primary" href="{{ url_for('bp_home.main') }}">Advanced Search</a>
+        <a class="btn btn-primary" href="{{ url_for('bp_home.sett'   ) }}">Settings</a>
+        <a class="btn btn-primary" href="{{ url_for('bp_home.help'   ) }}">Help</a>
+    </nav>
+        {% block content %}
+    
+        {% endblock %}
+    </div>
+    <script src="/static/bootstrap/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="/static/htmx/htmx.min.js" crossorigin="anonymous"></script>
+</body>
+</html>

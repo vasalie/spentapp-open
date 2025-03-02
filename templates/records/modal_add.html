@@ -1,0 +1,24 @@
+<!-- Add New Modal -->
+<div class="modal fade" id="AddNew">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content bg-dark">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Add New Entry</h4>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+            {% include 'records/form_add.html' %}
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        </div>
+  
+      </div>
+    </div>
+</div>
